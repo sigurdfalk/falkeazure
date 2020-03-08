@@ -13,6 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-module "resource-group" {
-  source = "./modules/resource-group"
+resource "azurerm_resource_group" "aci" {
+  name     = "rg-aci"
+  location = "West Europe"
 }
