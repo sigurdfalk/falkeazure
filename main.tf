@@ -1,0 +1,12 @@
+terraform {
+  required_version = "~>0.12"
+}
+
+provider "azurerm" {
+  version = "=2.0.0"
+  features {}
+}
+
+module "resource-group" {
+  source = "./modules/resource-group"
+}
