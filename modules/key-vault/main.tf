@@ -1,5 +1,5 @@
 data "azuread_user" "main" {
-  user_principal_name = "sigurd.falk@gmail.com"
+  object_id = "16c4d35f-2c84-4d92-8994-9bc1b7c3b58a"
 }
 
 data "azurerm_resource_group" "main" {
