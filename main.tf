@@ -3,7 +3,7 @@ terraform {
     resource_group_name  = "tfstate"
     storage_account_name = "tfstate71ac2932"
     container_name       = "tfstate"
-    key                  = "prod.terraform.tfstate"
+    key                  = "core.falkeredet.tfstate"
   }
 }
 
@@ -13,15 +13,13 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "falkeazure" {
-  name     = "rg-falkeazure"
+resource "azurerm_resource_group" "core_rg" {
+  name     = "rg-core"
   location = "West Europe"
 }
 
-resource "azurerm_container_registry" "acr" {
-  name                = "falkeazureacr"
-  resource_group_name = azurerm_resource_group.falkeazure.name
-  location            = azurerm_resource_group.falkeazure.location
-  sku                 = "Basic"
-  admin_enabled       = false
+module "key_vault" {
+  source = "./modules/key-vault"
+  name = "kv-core"
+  resource_group_name = azurerm_resource_group.core_rg.name
 }
