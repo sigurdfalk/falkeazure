@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "falkeazure" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "acr-falkeazure"
+  name                = "falkeazureacr"
   resource_group_name = azurerm_resource_group.falkeazure.name
   location            = azurerm_resource_group.falkeazure.location
   sku                 = "Basic"
