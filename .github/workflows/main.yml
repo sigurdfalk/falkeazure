@@ -13,6 +13,7 @@ jobs:
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: '.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Terraform Init'
@@ -20,12 +21,18 @@ jobs:
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'init'
+          tf_actions_working_dir: '.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_VAR_tenant_id: ${{ secrets.AZ_TENANT_ID }}
+          TF_VAR_subscription_id: ${{ secrets.AZ_SUBSCRIPTION_ID }}
+          TF_VAR_client_id: ${{ secrets.AZ_CLIENT_ID }}
+          TF_VAR_client_secret: ${{ secrets.AZ_CLIENT_SECRET }}
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'validate'
+          tf_actions_working_dir: '.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
