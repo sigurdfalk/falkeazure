@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "core_rg" {
 }
 
 module "key_vault" {
-  source = "./modules/key-vault"
-  name = "kv-core"
+  source              = "./modules/key-vault"
+  name                = "kv-core"
   resource_group_name = azurerm_resource_group.core_rg.name
 }
